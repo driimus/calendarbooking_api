@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js --watch server",
     "start": "cross-env NODE_ENV=production node index.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage -c jest.config.js",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "jest": {
@@ -41,6 +41,7 @@
     "husky": "^3.0.8",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.1",
+    "mock-fs": "^4.10.4",
     "nodemon": "^1.19.3",
     "prettier": "^1.18.2"
   },

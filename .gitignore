@@ -6,6 +6,9 @@ node_modules/
 # User image uploads
 assets/uploads
 
+# Code coverage reports
+coverage/
+
 # dotenv environment variables file
 .env
 
