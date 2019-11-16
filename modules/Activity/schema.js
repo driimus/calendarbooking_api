@@ -1,6 +1,6 @@
 module.exports = (Activity) => {
   Activity.schema = `CREATE TABLE IF NOT EXISTS activity(
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
     description TEXT,
     url TEXT,
