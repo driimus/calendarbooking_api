@@ -5,6 +5,7 @@ module.exports = {
   testPathIgnorePatterns: [
     '/node_modules/',
     '/assets/',
+    '/db/',
     '/__tests__/fixtures/',
   ],
 };

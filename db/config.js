@@ -14,9 +14,9 @@ module.exports = {
     port: process.env.RDS_PORT,
   },
   test: {
-    user: 'postgres',
-    host: 'localhost',
-    database: 'cwcalendartest',
-    password: 'verysecurepassword',
+    user: process.env.DB_USER || 'postgres',
+    host: process.env.DB_HOST || 'localhost',
+    database: process.env.DB_DATABASE || 'cwcalendartest',
+    password: process.env.DB_PASSWORD || 'verysecurepassword',
   },
 };
