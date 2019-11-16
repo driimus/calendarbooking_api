@@ -1,8 +1,12 @@
 const Koa = require('koa');
+const koaStatic = require('koa-static');
 
 const router = require('./routes/router.js');
 
 const app = new Koa();
+
+// Serve public assets.
+app.use(koaStatic('assets'));
 
 app.use(router.routes());
 
@@ -25,5 +29,4 @@ app.listen(port, async () => {
   Promise.all(models.map((model) => pool.query(model.schema)));
   // Drain the pool of connections.
   await pool.end();
-  console.log(`Server running on port ${port}.`);
 });

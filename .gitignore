@@ -1,4 +1,19 @@
 ### Node API
-# Dependency directory
-/node_modules
 
+# Dependency directory
+node_modules/
+
+# User image uploads
+assets/uploads
+
+# Code coverage reports
+coverage/
+
+# dotenv environment variables file
+.env
+
+# Optional npm cache directory
+.npm
+
+# Vim swap files
+*.swp

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js --watch server",
     "start": "cross-env NODE_ENV=production node index.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage -c jest.config.js",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "jest": {
@@ -20,13 +20,16 @@
     "cross-env": "^6.0.3",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "fs-extra": "^8.1.0",
     "koa": "^2.8.2",
     "koa-body": "^4.1.1",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.3",
     "koa-static": "^5.0.0",
-    "pg": "^7.12.1"
+    "mime-types": "^2.1.25",
+    "pg": "^7.12.1",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^6.5.1",
@@ -38,6 +41,7 @@
     "husky": "^3.0.8",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.1",
+    "mock-fs": "^4.10.4",
     "nodemon": "^1.19.3",
     "prettier": "^1.18.2"
   },
