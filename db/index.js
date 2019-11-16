@@ -12,7 +12,8 @@ class Database extends Pool {
    * @param {string} [env=*Node environment*] - The database environment to be used.
    */
   constructor(env = process.env.NODE_ENV) {
-    return super(config[env]);
+    super(config[env]);
+    return this;
   }
 }
 
