@@ -13,5 +13,7 @@ class User {
 require('./schema')(User);
 require('./is-available')(User);
 require('./register')(User);
+require('./does-exist')(User);
+require('./login')(User);
 
 module.exports = User;
