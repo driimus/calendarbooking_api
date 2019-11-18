@@ -8,6 +8,12 @@ const User = require('../modules/User');
 
 const router = new Router();
 
+/**
+ * The script to process new user registrations.
+ *
+ * @name Register Script
+ * @route {POST} /register
+ */
 router.post('/register', koaBody, async (ctx) => {
   try {
     // extract the data from the request
@@ -22,6 +28,13 @@ router.post('/register', koaBody, async (ctx) => {
     ctx.body = { message: err.message };
   }
 });
+
+/**
+ * The script to process user login.
+ *
+ * @name Register Script
+ * @route {POST} /login
+ */
 
 router.post('/login', koaBody, async (ctx) => {
   try {
