@@ -1,10 +1,12 @@
 const Koa = require('koa');
 
 const router = require('./routes/router.js');
+const userAuthRoutes = require('./routes/user-auth');
 
 const app = new Koa();
 
 app.use(router.routes());
+app.use(userAuthRoutes.routes());
 
 const Connection = require('./db');
 
