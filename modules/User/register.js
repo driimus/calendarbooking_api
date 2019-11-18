@@ -1,4 +1,3 @@
-
 const bcrypt = require('bcrypt-promise');
 
 const saltRounds = 5;
@@ -17,8 +16,10 @@ async function register(username, password) {
   if (pass.length === 0) throw new Error('missing password');
   // Save username and encrypted password.
   pass = await bcrypt.hash(pass, saltRounds);
-  const sql = 'INSERT INTO users(username, password) VALUES($1, $2, $3) RETURNING id';
-  const { rows: [user] } = await this.db.query(sql, [username, pass]);
+  const sql = 'INSERT INTO users(username, password) VALUES($1, $2) RETURNING id';
+  const {
+    rows: [user],
+  } = await this.db.query(sql, [username, pass]);
   return user.id;
 }
 
