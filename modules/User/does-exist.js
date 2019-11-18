@@ -13,7 +13,7 @@ const FIELDS = {
  * @param {string} field - Name of the user attribute.
  * @param value - Value to be searched for.
  */
-async function isAvailable(field, value) {
+async function doesExist(field, value) {
   if (Object.keys(FIELDS).includes(field) === false) throw new Error(`invalid field "${field}"`);
   // Validate the given value.
   FIELDS[field](value);
@@ -22,11 +22,11 @@ async function isAvailable(field, value) {
   const {
     rows: { length: exists },
   } = await this.db.query(sql, [value]);
-  if (exists !== 0) throw new Error(`${field} "${value}" already in use`);
+  if (exists !== 1) throw new Error(`No ${field} "${value}" record in database`);
   return true;
 }
 
 module.exports = (User) => {
-  User.prototype.isAvailable = isAvailable;
+  User.prototype.doesExist = doesExist;
   return true;
 };
