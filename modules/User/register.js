@@ -10,16 +10,16 @@ const saltRounds = 5;
  * @param {string} password - The plaintext password.
  * @returns {number} The new account's unique identifier.
  */
-async function register(username, password) {
-  let pass = password;
-  await this.isAvailable('username', username);
+async function register(newUser) {
+  let pass = newUser.password;
+  await this.isAvailable('username', newUser.username);
   if (pass.length === 0) throw new Error('missing password');
   // Save username and encrypted password.
   pass = await bcrypt.hash(pass, saltRounds);
   const sql = 'INSERT INTO users(username, password) VALUES($1, $2) RETURNING id';
   const {
     rows: [user],
-  } = await this.db.query(sql, [username, pass]);
+  } = await this.db.query(sql, [newUser.username, pass]);
   return user.id;
 }
 

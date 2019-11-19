@@ -8,18 +8,18 @@ const bcrypt = require('bcrypt-promise');
  * @param {string} password - The plaintext password.
  * @returns {number} The new account's unique identifier.
  */
-async function login(username, password) {
-  const pass = password;
-  await this.doesExist('username', username);
+async function login(newUser) {
+  const pass = newUser.password;
+  await this.doesExist('username', newUser.username);
   if (pass.length === 0) throw new Error('missing password');
   // Save username and encrypted password.
   const sql = 'SELECT * FROM users WHERE username=$1';
   const {
     rows: [user],
-  } = await this.db.query(sql, [username]);
-  const compPasswords = await bcrypt.compare(pass, user.password);
+  } = await this.db.query(sql, [newUser.Username]);
+  const compPasswords = await bcrypt.compare(pass, newUser.password);
   if (compPasswords === false) {
-    throw new Error(`invalid password for account ${username}`);
+    throw new Error(`invalid password for account ${newUser.username}`);
   }
   return user.id;
 }
