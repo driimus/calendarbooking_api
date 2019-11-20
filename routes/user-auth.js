@@ -32,6 +32,7 @@ router.post('/register', koaBody, async (ctx) => {
     ctx.response.status = 201;
     ctx.body = { message: `User registered ${newUser.user}` };
   } catch (err) {
+    ctx.status = 400;
     ctx.body = { message: err.message };
   }
 });
@@ -56,6 +57,7 @@ router.post('/login', koaBody, async (ctx) => {
     ctx.response.status = 201;
     ctx.body = { message: `User Logged ${newUser.username}` };
   } catch (err) {
+    ctx.status = 400;
     ctx.body = { message: err.message };
   }
 });

@@ -1,10 +1,12 @@
 const Koa = require('koa');
+const cors = require('@koa/cors');
 
 const router = require('./routes/router.js');
 const userAuthRoutes = require('./routes/user-auth');
 
 const app = new Koa();
 
+app.use(cors());
 app.use(router.routes());
 app.use(userAuthRoutes.routes());
 
@@ -19,7 +21,7 @@ const Tag = require('./modules/Tag');
 
 const models = [User, Calendar, Activity, Comment, Tag];
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 app.listen(port, async () => {
   // Initialize a new pool.
   const pool = new Connection();
