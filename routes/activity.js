@@ -42,4 +42,22 @@ router.post('/', koaBody, async (ctx) => {
   }
 });
 
+/**
+ * The secure activity deletion endpoint.
+ *
+ * @name Delete activity with ID
+ * @route {GET} /api/v0.1/activity/:id/delete
+ * @authentication This route requires basic authentication.
+ */
+router.get('/:id([0-9]{1,})/delete', async (ctx) => {
+  try {
+    const Activity = await new Activities();
+    await Activity.remove(ctx.params.id);
+    ctx.status = 200;
+    ctx.body = { msg: 'Successfully deleted activity' };
+  } catch (err) {
+    ctx.throw(400, err.message);
+  }
+});
+
 module.exports = router;
