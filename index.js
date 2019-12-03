@@ -23,7 +23,7 @@ const Activity = require('./modules/Activity');
 const Comment = require('./modules/Comment');
 const Tag = require('./modules/Tag');
 
-const models = [User, Calendar, Activity, Comment, Tag];
+const models = [User, Activity, Calendar, Comment, Tag];
 
 const port = process.env.PORT || 3002;
 app.listen(port, async () => {
