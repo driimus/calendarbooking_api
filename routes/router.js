@@ -11,6 +11,8 @@ const router = Router({
   prefix: '/api/v0.1',
 });
 
+router.use(require('./activity').routes());
+
 router.get('/', async (ctx) => {
   ctx.body = { message: 'Hello world.' };
 });
