@@ -4,7 +4,7 @@
   "description": "Back-End API for 304CEM coursework.",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development DB_USER=tiago nodemon index.js --watch server",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "start": "cross-env NODE_ENV=production node index.js",
     "test": "jest --coverage -c jest.config.js",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
@@ -13,6 +13,15 @@
     "projects": [
       "<rootDir>/jest-test.config.js"
     ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.spec.js",
+      "docs/*",
+      "coverage/*",
+      "assets/*"
+    ],
+    "delay": "1000"
   },
   "author": "",
   "license": "ISC",
