@@ -4,7 +4,7 @@
   "description": "Back-End API for 304CEM coursework.",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon index.js --watch server",
+    "dev": "cross-env NODE_ENV=development DB_USER=tiago nodemon index.js --watch server",
     "start": "cross-env NODE_ENV=production node index.js",
     "test": "jest --coverage",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
@@ -17,6 +17,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^2.2.3",
+    "bcrypt": "^3.0.6",
+    "bcrypt-promise": "^2.0.0",
     "cross-env": "^6.0.3",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
@@ -30,7 +33,6 @@
   },
   "devDependencies": {
     "eslint": "^6.5.1",
-    "koa-static": "^5.0.0"
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",

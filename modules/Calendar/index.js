@@ -1,11 +1,9 @@
-'use strict';
-
-const db = require('../../db');
+const Connection = require('../../db');
 
 class Calendar {
   constructor() {
     return (async () => {
-      this.db = new db();
+      this.db = new Connection();
       return this;
     })();
   }

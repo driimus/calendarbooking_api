@@ -8,6 +8,9 @@
   "parserOptions": {
     "ecmaVersion": 8
   },
+  "rules": {
+    "no-param-reassign": ["error", { "props": false }]
+  },
   "extends": ["airbnb"],
   "plugins": ["prettier"]
 }
