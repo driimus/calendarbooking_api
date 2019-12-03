@@ -6,8 +6,8 @@
 const { readdirSync, lstatSync } = require('fs');
 const path = require('path');
 
-const models = readdirSync(__dirname).filter(
-  (file) => lstatSync(path.join(__dirname, file)).isDirectory(),
+const models = readdirSync(path.resolve(__dirname, '../')).filter(
+  (file) => lstatSync(path.join(path.resolve(__dirname, '../'), file)).isDirectory(),
 );
 
 const isModel = async (model) => {

@@ -13,6 +13,7 @@ class Activity {
 require('./schema')(Activity);
 require('./create')(Activity);
 require('./update')(Activity);
+require('./remove')(Activity);
 require('./is-valid')(Activity);
 
 module.exports = Activity;

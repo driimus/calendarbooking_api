@@ -34,22 +34,25 @@ afterAll(async (done) => {
 });
 
 describe('create()', () => {
-  test('error if missing activity title', async (done) => {
+  test('error if invalid activity ID', async (done) => {
     expect.assertions(1);
-    // Activity object with no title.
-    const { description, url, location } = dummy;
-    await expect(this.activity.create({
-      description, url, location,
-    }))
-      .rejects.toEqual(Error('Missing required fields'));
+    await expect(this.activity.remove('fish'))
+      .rejects.toEqual(Error('invalid Activity ID'));
     done();
   });
 
-  test('add valid activity', async (done) => {
+  test('error if inexistent activity', async (done) => {
     expect.assertions(1);
-    // Complete activity object.
+    await expect(this.activity.remove(1))
+      .rejects.toEqual(Error('Could not delete article with id 1'));
+    done();
+  });
+
+  test('remove valid activity', async (done) => {
+    expect.assertions(1);
     const id = await this.activity.create(dummy);
-    expect(id).toEqual(1);
+    const deleted = await this.activity.remove(id);
+    expect(deleted).toBe(true);
     done();
   });
 });

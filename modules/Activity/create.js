@@ -1,5 +1,5 @@
 /**
- * Saves a new activtiy submission.
+ * Saves a new activity submission.
  * @memberof Activity.prototype
  *
  * @async
@@ -15,8 +15,8 @@ async function create(activity) {
     location,
   } = activity;
   const sql = 'INSERT INTO activity VALUES (DEFAULT, $1, $2, $3, $4) RETURNING id';
-  const id = await this.db.query(sql, [title, description, url, location]);
-  return id;
+  const { rows: [res] } = await this.db.query(sql, [title, description, url, location]);
+  return res.id;
 }
 
 module.exports = (Activity) => {
