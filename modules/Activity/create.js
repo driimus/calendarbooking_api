@@ -1,10 +1,10 @@
 /**
- * Saves a new article submission.
- * @memberof Article.prototype
+ * Saves a new activity submission.
+ * @memberof Activity.prototype
  *
  * @async
  * @param {object} activity - The activity object submitted.
- * @returns {boolean} On successful activity creation.
+ * @returns {number} ID of the created activity.
  */
 async function create(activity) {
   await this.isValid(activity);
@@ -15,8 +15,8 @@ async function create(activity) {
     location,
   } = activity;
   const sql = 'INSERT INTO activity VALUES (DEFAULT, $1, $2, $3, $4) RETURNING id';
-  const id = await this.db.query(sql, [title, description, url, location]);
-  return id;
+  const { rows: [res] } = await this.db.query(sql, [title, description, url, location]);
+  return res.id;
 }
 
 module.exports = (Activity) => {
