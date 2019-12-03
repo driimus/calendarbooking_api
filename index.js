@@ -29,6 +29,7 @@ const port = process.env.PORT || 3002;
 app.listen(port, async () => {
   // Initialize a new pool.
   const pool = new Connection();
+  await pool.query(`ALTER ROLE ${pool.options.user} SET search_path = public`);
   // Update the database schema.
   Promise.all(models.map((model) => pool.query(model.schema)));
   // Drain the pool of connections.

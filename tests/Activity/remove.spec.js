@@ -11,7 +11,7 @@ const dummy = {
 
 beforeAll(async (done) => {
   const db = new Connection();
-  await db.query('SET search_path = pg_temp');
+  await db.query(`ALTER ROLE ${db.options.user} SET search_path = pg_temp`);
   db.end();
   done();
 });
@@ -23,13 +23,6 @@ beforeEach(async (done) => {
 
 afterEach(async (done) => {
   this.activity.db.end();
-  done();
-});
-
-afterAll(async (done) => {
-  const db = new Connection();
-  await db.query('SET search_path = public');
-  db.end();
   done();
 });
 
