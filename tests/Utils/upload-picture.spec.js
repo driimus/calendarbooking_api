@@ -26,8 +26,9 @@ describe('uploadPicture()', () => {
         'some.wav': Buffer.from([1, 1, 2, 3, 5, 8, 13]),
       },
     });
-    await expect(uploadPicture(soundFile))
-      .rejects.toEqual(Error('Uploaded file is not a valid image format'));
+    await expect(uploadPicture(soundFile)).rejects.toEqual(
+      Error('Uploaded file is not a valid image format'),
+    );
     await mock.restore();
     done();
   });

@@ -15,7 +15,6 @@ router.get('/', async (ctx) => {
   ctx.body = { message: 'Hello world.' };
 });
 
-
 /**
  * The secure multiple image upload endpoint.
  *
