@@ -30,7 +30,7 @@ router.post('/register', koaBody, async (ctx) => {
     await user.register(newUser);
     // redirect to the home page
     ctx.response.status = 201;
-    ctx.body = { message: `User registered ${newUser.user}` };
+    ctx.body = { message: `User registered ${newUser.username}` };
   } catch (err) {
     ctx.status = 400;
     ctx.body = { message: err.message };
@@ -53,7 +53,7 @@ router.post('/login', koaBody, async (ctx) => {
         ctx.request.body === undefined ? undefined : ctx.request.body.pass,
     };
     const user = await new User();
-    await user.login(newUser.username, newUser.password);
+    await user.login(newUser);
     ctx.response.status = 201;
     ctx.body = { message: `User Logged ${newUser.username}` };
   } catch (err) {

@@ -16,8 +16,8 @@ async function login(newUser) {
   const sql = 'SELECT * FROM users WHERE username=$1';
   const {
     rows: [user],
-  } = await this.db.query(sql, [newUser.Username]);
-  const compPasswords = await bcrypt.compare(pass, newUser.password);
+  } = await this.db.query(sql, [newUser.username]);
+  const compPasswords = await bcrypt.compare(pass, user.password);
   if (compPasswords === false) {
     throw new Error(`invalid password for account ${newUser.username}`);
   }
