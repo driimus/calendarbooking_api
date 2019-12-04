@@ -13,6 +13,7 @@ class Calendar {
 require('./schema')(Calendar);
 require('./create')(Calendar);
 require('./update')(Calendar);
+require('./remove')(Calendar);
 require('./is-valid')(Calendar);
 
 module.exports = Calendar;
