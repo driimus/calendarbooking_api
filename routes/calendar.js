@@ -75,4 +75,23 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
   }
 });
 
+/**
+ * The secure event deletion endpoint.
+ *
+ * @name Delete calendar event with ID
+ * @route {DELETE} /api/v0.1/calendar/:id/delete
+ * @authentication This route requires basic authentication.
+ */
+router.del('/:id([0-9]{1,})', koaBody, async (ctx) => {
+  try {
+    const Calendar = await new Activities();
+    const { userId } = ctx.request.body;
+    await Calendar.remove(ctx.params.id, userId);
+    ctx.status = 200;
+    ctx.body = { msg: 'Successfully deleted calendar' };
+  } catch (err) {
+    ctx.throw(400, err.message);
+  }
+});
+
 module.exports = router;
