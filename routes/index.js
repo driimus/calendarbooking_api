@@ -13,6 +13,8 @@ const router = Router({
 
 router.use(require('./activity').routes());
 router.use(require('./calendar').routes());
+router.use(require('./comment').routes());
+router.use(require('./user-auth').routes());
 
 router.get('/', async (ctx) => {
   ctx.body = { message: 'Hello world.' };
