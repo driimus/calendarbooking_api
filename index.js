@@ -4,6 +4,7 @@ const koaStatic = require('koa-static');
 
 const router = require('./routes/router.js');
 const userAuthRoutes = require('./routes/user-auth');
+const commentRoutes = require('./routes/comment');
 
 const app = new Koa();
 
@@ -13,6 +14,7 @@ app.use(koaStatic('assets'));
 
 app.use(router.routes());
 app.use(userAuthRoutes.routes());
+app.use(commentRoutes.routes())
 
 const Connection = require('./db');
 
