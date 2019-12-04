@@ -4,6 +4,7 @@ const koaStatic = require('koa-static');
 
 const router = require('./routes/router.js');
 const userAuthRoutes = require('./routes/user-auth');
+const commentRoutes = require('./routes/comment');
 
 const app = new Koa();
 
@@ -13,6 +14,7 @@ app.use(koaStatic('assets'));
 
 app.use(router.routes());
 app.use(userAuthRoutes.routes());
+app.use(commentRoutes.routes())
 
 const Connection = require('./db');
 
@@ -29,6 +31,7 @@ const port = process.env.PORT || 3002;
 app.listen(port, async () => {
   // Initialize a new pool.
   const pool = new Connection();
+  await pool.query(`ALTER ROLE ${pool.options.user} SET search_path = public`);
   // Update the database schema.
   Promise.all(models.map((model) => pool.query(model.schema)));
   // Drain the pool of connections.
