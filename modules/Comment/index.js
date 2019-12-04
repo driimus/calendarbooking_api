@@ -14,6 +14,7 @@ require('./schema')(Comment);
 require('./create')(Comment);
 require('./isValid')(Comment);
 require('./getById')(Comment);
+require('./getAllByActivityId')(Comment);
 
 
 module.exports = Comment;
