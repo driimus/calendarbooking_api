@@ -13,6 +13,7 @@ class Comment {
 require('./schema')(Comment);
 require('./create')(Comment);
 require('./isValid')(Comment);
+require('./getById')(Comment);
 
 
 module.exports = Comment;
