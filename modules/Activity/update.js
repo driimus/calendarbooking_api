@@ -23,7 +23,7 @@ async function update(activityId, newActivity) {
     WHERE id=$1
   `;
   const { rowCount: updates } = await this.db.query(sql, [id, title, description, url, location]);
-  if (updates === 0) throw new Error(`Could not update article with id ${id}`);
+  if (updates === 0) throw new Error(`Could not update activity with id ${id}`);
   return true;
 }
 

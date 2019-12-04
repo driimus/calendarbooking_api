@@ -50,7 +50,7 @@ describe('update()', () => {
   test('error if inexistent activity', async (done) => {
     expect.assertions(1);
     await expect(this.activity.update(1, newDummy))
-      .rejects.toEqual(Error('Could not update article with id 1'));
+      .rejects.toEqual(Error('Could not update activity with id 1'));
     done();
   });
 
