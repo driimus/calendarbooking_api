@@ -6,8 +6,11 @@
     "jest": true
   },
   "parserOptions": {
-    "ecmaVersion": 8
+    "ecmaVersion": 9
   },
-  "extends": ["plugin:prettier/recommended"],
+  "rules": {
+    "no-param-reassign": ["error", { "props": false }]
+  },
+  "extends": ["airbnb"],
   "plugins": ["prettier"]
 }
