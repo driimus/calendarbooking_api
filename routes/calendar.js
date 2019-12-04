@@ -29,7 +29,6 @@ router.post('/', koaBody, async (ctx) => {
       end,
       location,
     } = ctx.request.body;
-    console.log(ctx.request.body);
     const id = await Calendar.create({
       userId,
       activityId,
@@ -39,6 +38,38 @@ router.post('/', koaBody, async (ctx) => {
     });
     ctx.status = 200;
     ctx.body = { msg: 'Successfully created calendar', id };
+  } catch (err) {
+    ctx.throw(400, err.message);
+  }
+});
+
+/**
+ * The secure calendar creation endpoint.
+ *
+ * @name Create a new calendar calendar
+ * @route {PUT} /api/v0.1/calendar/:id
+ * @authentication This route requires basic authentication.
+ */
+router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
+  // TO-DO: Implement user authentication
+  const Calendar = await new Activities();
+  try {
+    const {
+      userId,
+      activityId,
+      start,
+      end,
+      location,
+    } = ctx.request.body;
+    await Calendar.update(ctx.params.id, {
+      userId,
+      activityId,
+      start,
+      end,
+      location,
+    });
+    ctx.status = 200;
+    ctx.body = { msg: 'Successfully updated event' };
   } catch (err) {
     ctx.throw(400, err.message);
   }
