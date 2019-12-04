@@ -12,7 +12,7 @@ async function remove(activityId) {
   const id = await isId(activityId, 'Activity');
   const sql = 'DELETE FROM activity WHERE id=$1';
   const { rowCount: deletes } = await this.db.query(sql, [id]);
-  if (deletes === 0) throw new Error(`Could not delete article with id ${id}`);
+  if (deletes === 0) throw new Error(`Could not delete activity with id ${id}`);
   return true;
 }
 
