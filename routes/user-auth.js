@@ -7,7 +7,7 @@ const koaBody = require('koa-body')({
 const User = require('../modules/User');
 
 const router = new Router({
-  prefix: '/api/v0.1/users',
+  prefix: '/users',
 });
 
 /**
