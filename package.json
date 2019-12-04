@@ -1,6 +1,6 @@
 {
   "name": "backend_petrec-rosariot",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Back-End API for 304CEM coursework.",
   "main": "index.js",
   "scripts": {
