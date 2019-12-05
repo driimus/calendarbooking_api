@@ -1,10 +1,10 @@
 const { isId } = require('../Utils/utils');
 
 /**
- * Retrieve a comment by the its unique identifier
+ * Retrieve all comments for an activity
  *
  * @param {int} activityId
- * @returns {object} Comment matching the id
+ * @returns {object} Comments matching the activity id
  */
 
 
