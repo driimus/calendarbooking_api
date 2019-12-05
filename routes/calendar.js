@@ -55,7 +55,9 @@ router.get('/', async (ctx) => {
   const userId = 1;
   const Calendar = await new Activities();
   try {
-    const events = await Calendar.getBetween(userId, ctx.params.from, ctx.params.to);
+    const events = ctx.params.from && ctx.params.to
+      ? await Calendar.getBetween(userId, ctx.params.from, ctx.params.to)
+      : await Calendar.getAll(userId);
     ctx.status = 200;
     ctx.body = { msg: 'Successfully retrieved events', events };
   } catch (err) {
