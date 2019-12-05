@@ -44,6 +44,26 @@ router.post('/', koaBody, async (ctx) => {
 });
 
 /**
+ * Retrieve activities within a date range.
+ *
+ * @name Get activities within date range
+ * @route {POST} /api/v0.1/calendar/?from=&to=
+ * @authentication This route requires basic authentication.
+ */
+router.get('/', async (ctx) => {
+  // TO-DO: Implement user authentication
+  const userId = 1;
+  const Calendar = await new Activities();
+  try {
+    const events = await Calendar.getBetween(userId, ctx.params.from, ctx.params.to);
+    ctx.status = 200;
+    ctx.body = { msg: 'Successfully retrieved events', events };
+  } catch (err) {
+    ctx.throw(400, err.message);
+  }
+});
+
+/**
  * The secure calendar creation endpoint.
  *
  * @name Create a new calendar calendar
