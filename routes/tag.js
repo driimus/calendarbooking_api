@@ -23,14 +23,14 @@ router.post('/', koaBody, async (ctx) => {
   const tag = await new Tag();
   try {
     const {
-        taggedUserId,
-        taggedByUserId,
-        calendarItemId,
+      taggedUserId,
+      taggedByUserId,
+      calendarItemId,
     } = ctx.request.body;
     const id = await tag.create({
-        taggedUserId,
-        taggedByUserId,
-        calendarItemId
+      taggedUserId,
+      taggedByUserId,
+      calendarItemId,
     });
     ctx.status = 200;
     ctx.body = { msg: 'Successfully created tag', id };
@@ -51,12 +51,12 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
   const tag = await new Tag();
   try {
     const tagObj = {
-      id : ctx.params.id,
-      status : ctx.request.body.status
-    }
+      id: ctx.params.id,
+      status: ctx.request.body.status,
+    };
     const response = await tag.update(tagObj);
     ctx.status = 200;
-    ctx.body = {response,  msg: 'Successfully updated Tag' };
+    ctx.body = { response, msg: 'Successfully updated Tag' };
   } catch (err) {
     ctx.throw(400, err.message);
   }

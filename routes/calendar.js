@@ -145,17 +145,16 @@ router.del('/:id([0-9]{1,})', koaBody, async (ctx) => {
  * @authentication This route requires basic authentication.
  */
 
-router.get('/getAllByUserTaggedId', koaBody, async(ctx) => {
-  try{
+router.get('/getAllByUserTaggedId', koaBody, async (ctx) => {
+  try {
     const Calendar = await new Activities();
-    const userId = ctx.query.userId;
-    console.log(userId)
+    const { userId } = ctx.query;
     const response = await Calendar.getAllByUserTagged(userId);
     ctx.status = 200;
-    ctx.body = response
-  }catch (err) {
-    ctx.throw(400, err.message)
+    ctx.body = response;
+  } catch (err) {
+    ctx.throw(400, err.message);
   }
-})
+});
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const {isId} = require('../Utils/utils')
+const { isId } = require('../Utils/utils');
 /**
  * Update the Tag status
  *
@@ -7,17 +7,16 @@ const {isId} = require('../Utils/utils')
  */
 
 async function update(tagUpdate) {
-    await isId(tagUpdate.id, 'Tag');
-    const sql = 'UPDATE taggedUsers SET status=$1 WHERE id=$2 Returning *';
-    const { rows: [tag] } = await this.db.query(sql, [
-      tagUpdate.status,
-      tagUpdate.id,
-    ]);
-    return tag;
-  }
-  
-  module.exports = (Tag) => {
-    Tag.prototype.update = update;
-    return true;
-  };
-  
+  await isId(tagUpdate.id, 'Tag');
+  const sql = 'UPDATE taggedUsers SET status=$1 WHERE id=$2 Returning *';
+  const { rows: [tag] } = await this.db.query(sql, [
+    tagUpdate.status,
+    tagUpdate.id,
+  ]);
+  return tag;
+}
+
+module.exports = (Tag) => {
+  Tag.prototype.update = update;
+  return true;
+};
