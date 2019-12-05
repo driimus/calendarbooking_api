@@ -4,7 +4,7 @@ const Activity = require('../../modules/Activity');
 
 const dummy = {
   title: 'So long and thanks for all the fish',
-  description: `Test article description of a valid length
+  description: `Test activity description of a valid length
   that spreads over multiple lines`,
   url: 'https://nodejs.dev/introduction-to-nodejs',
   location: 'Priory St, Coventry, UK',
