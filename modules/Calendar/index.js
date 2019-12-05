@@ -16,5 +16,6 @@ require('./update')(Calendar);
 require('./remove')(Calendar);
 require('./is-valid')(Calendar);
 require('./get-between')(Calendar);
+require('./getAllByUserTagged')(Calendar);
 
 module.exports = Calendar;
