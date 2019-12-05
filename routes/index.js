@@ -15,6 +15,7 @@ router.use(require('./activity').routes());
 router.use(require('./calendar').routes());
 router.use(require('./comment').routes());
 router.use(require('./user-auth').routes());
+router.use(require('./tag').routes());
 
 router.get('/', async (ctx) => {
   ctx.body = { message: 'Hello world.' };
