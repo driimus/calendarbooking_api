@@ -13,5 +13,6 @@ class Tag {
 require('./schema')(Tag);
 require('./create')(Tag);
 require('./isValid')(Tag);
+require('./update')(Tag);
 
 module.exports = Tag;
