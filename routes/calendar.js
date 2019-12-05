@@ -64,9 +64,29 @@ router.get('/', async (ctx) => {
 });
 
 /**
- * The secure calendar creation endpoint.
+ * Retrieve calendar event by ID.
  *
- * @name Create a new calendar calendar
+ * @name Get calendar event by ID
+ * @route {GET} /api/v0.1/calendar/:id
+ * @authentication This route requires basic authentication.
+ */
+router.get('/:id([0-9]{1,})', async (ctx) => {
+  // TO-DO: Implement user authentication
+  const userId = 1;
+  const Calendar = await new Activities();
+  try {
+    const event = await Calendar.getBetween(userId, ctx.params.id);
+    ctx.status = 200;
+    ctx.body = { msg: 'Successfully retrieved event', event };
+  } catch (err) {
+    ctx.throw(400, err.message);
+  }
+});
+
+/**
+ * The secure calendar update endpoint.
+ *
+ * @name Update a calendar event
  * @route {PUT} /api/v0.1/calendar/:id
  * @authentication This route requires basic authentication.
  */
