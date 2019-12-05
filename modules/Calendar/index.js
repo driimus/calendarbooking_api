@@ -10,6 +10,7 @@ class Calendar {
   }
 }
 
+require('./get')(Calendar);
 require('./schema')(Calendar);
 require('./create')(Calendar);
 require('./update')(Calendar);
