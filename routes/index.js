@@ -8,7 +8,7 @@ const koaBody = require('koa-body')({
 const { uploadPicture } = require('../modules/Utils');
 
 const router = Router({
-  prefix: '/api/v0.2',
+  prefix: '/api/v1.0',
 });
 
 router.use(require('./activity').routes());
