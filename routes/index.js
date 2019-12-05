@@ -25,7 +25,7 @@ router.get('/', async (ctx) => {
  * The secure multiple image upload endpoint.
  *
  * @name Upload Image file(s)
- * @route {POST} /api/v0.1/upload
+ * @route {POST} /api/v1.0/upload
  * @authentication This route requires cookie-based authentication.
  */
 router.post('/upload', koaBody, async (ctx) => {

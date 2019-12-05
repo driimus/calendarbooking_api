@@ -15,7 +15,7 @@ const router = Router({
  * The secure Tag creation endpoint.
  *
  * @name Create a new Tag
- * @route {POST} /api/v0.1/calendar/
+ * @route {POST} /api/v1.0/calendar/
  * @authentication This route requires basic authentication.
  */
 router.post('/', koaBody, async (ctx) => {
@@ -43,7 +43,7 @@ router.post('/', koaBody, async (ctx) => {
  * The secure tag update endpoint.
  *
  * @name Update a tag status
- * @route {PUT} /api/v0.1/calendar/:id
+ * @route {PUT} /api/v1.0/calendar/:id
  * @authentication This route requires basic authentication.
  */
 router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {

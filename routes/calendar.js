@@ -15,7 +15,7 @@ const router = Router({
  * The secure calendar creation endpoint.
  *
  * @name Create a new calendar calendar
- * @route {POST} /api/v0.1/calendar/
+ * @route {POST} /api/v1.0/calendar/
  * @authentication This route requires basic authentication.
  */
 router.post('/', koaBody, async (ctx) => {
@@ -47,7 +47,7 @@ router.post('/', koaBody, async (ctx) => {
  * Retrieve activities within a date range.
  *
  * @name Get activities within date range
- * @route {POST} /api/v0.1/calendar/?from=&to=
+ * @route {POST} /api/v1.0/calendar/?from=&to=
  * @authentication This route requires basic authentication.
  */
 router.get('/', async (ctx) => {
@@ -69,7 +69,7 @@ router.get('/', async (ctx) => {
  * Retrieve calendar event by ID.
  *
  * @name Get calendar event by ID
- * @route {GET} /api/v0.1/calendar/:id
+ * @route {GET} /api/v1.0/calendar/:id
  * @authentication This route requires basic authentication.
  */
 router.get('/:id([0-9]{1,})', async (ctx) => {
@@ -89,7 +89,7 @@ router.get('/:id([0-9]{1,})', async (ctx) => {
  * The secure calendar update endpoint.
  *
  * @name Update a calendar event
- * @route {PUT} /api/v0.1/calendar/:id
+ * @route {PUT} /api/v1.0/calendar/:id
  * @authentication This route requires basic authentication.
  */
 router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
@@ -121,7 +121,7 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
  * The secure event deletion endpoint.
  *
  * @name Delete calendar event with ID
- * @route {DELETE} /api/v0.1/calendar/:id/delete
+ * @route {DELETE} /api/v1.0/calendar/:id/delete
  * @authentication This route requires basic authentication.
  */
 router.del('/:id([0-9]{1,})', koaBody, async (ctx) => {
@@ -141,7 +141,7 @@ router.del('/:id([0-9]{1,})', koaBody, async (ctx) => {
  * The secure endpoit to retrieve All the Activities a User is tagged
  *
  * @name getAllByUserTagged user ID
- * @route {getAllByUserTaggedId} /api/v0.2/calendar/getAllByUserTaggedId
+ * @route {getAllByUserTaggedId} /api/v1.0/calendar/getAllByUserTaggedId
  * @authentication This route requires basic authentication.
  */
 
