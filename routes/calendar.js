@@ -136,4 +136,26 @@ router.del('/:id([0-9]{1,})', koaBody, async (ctx) => {
   }
 });
 
+
+/**
+ * The secure endpoit to retrieve All the Activities a User is tagged
+ *
+ * @name getAllByUserTagged user ID
+ * @route {getAllByUserTaggedId} /api/v0.2/calendar/getAllByUserTaggedId
+ * @authentication This route requires basic authentication.
+ */
+
+router.get('/getAllByUserTaggedId', koaBody, async(ctx) => {
+  try{
+    const Calendar = await new Activities();
+    const userId = ctx.query.userId;
+    console.log(userId)
+    const response = await Calendar.getAllByUserTagged(userId);
+    ctx.status = 200;
+    ctx.body = response
+  }catch (err) {
+    ctx.throw(400, err.message)
+  }
+})
+
 module.exports = router;
