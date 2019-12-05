@@ -10,20 +10,6 @@ const dummies = [
     end: new Date(0).setDate(4),
     location: '',
   },
-  {
-    userId,
-    activityId: 3,
-    start: new Date(0).setDate(5),
-    end: new Date(0).setDate(6),
-    location: 'Priory St, Coventry, UK',
-  },
-  {
-    userId,
-    activityId: 5,
-    start: new Date(0).setDate(1),
-    end: new Date(0).setDate(2),
-    location: 'Priory St, Coventry, UK',
-  },
   // Event of another user.
   {
     userId: 99,
