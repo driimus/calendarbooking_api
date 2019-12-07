@@ -15,7 +15,7 @@ const router = Router({
  * The secure activity creation endpoint.
  *
  * @name Create a new calendar activity
- * @route {POST} /api/v0.1/activity/
+ * @route {POST} /api/v1.0/activity/
  * @authentication This route requires basic authentication.
  */
 router.post('/', koaBody, async (ctx) => {
@@ -46,7 +46,7 @@ router.post('/', koaBody, async (ctx) => {
  * The secure activity creation endpoint.
  *
  * @name Create a new calendar activity
- * @route {PUT} /api/v0.1/activity/:id
+ * @route {PUT} /api/v1.0/activity/:id
  * @authentication This route requires basic authentication.
  */
 router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
@@ -77,7 +77,7 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
  * The secure activity deletion endpoint.
  *
  * @name Delete activity with ID
- * @route {GET} /api/v0.1/activity/:id/delete
+ * @route {GET} /api/v1.0/activity/:id/delete
  * @authentication This route requires basic authentication.
  */
 router.get('/:id([0-9]{1,})/delete', async (ctx) => {

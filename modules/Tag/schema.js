@@ -5,7 +5,7 @@ module.exports = (Tag) => {
     taggedByUserId INT ${process.env.NODE_ENV === 'test' ? '' : 'REFERENCES users(id)'},
     calendarItemId INT ${process.env.NODE_ENV === 'test' ? '' : 'REFERENCES calendar(id)'},
     status TEXT DEFAULT 'pending'
-		CHECK (status in ('pending','accepted','rejected'))
+    CHECK (status in ('pending','accepted','rejected'))
   )`;
   return true;
 };
