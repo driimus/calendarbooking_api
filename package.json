@@ -1,12 +1,13 @@
 {
   "name": "backend_petrec-rosariot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Back-End API for 304CEM coursework.",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "start": "NODE_ENV=production node index.js",
     "test": "jest --coverage -c jest.config.js",
+    "jsdoc": "node_modules/.bin/jsdoc -c jsdoc.conf",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "jest": {
@@ -51,6 +52,8 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
+    "jsdoc": "^3.6.3",
+    "jsdoc-route-plugin": "^0.1.0",
     "lint-staged": "^9.4.1",
     "mock-fs": "^4.10.4",
     "nodemon": "^1.19.3",
