@@ -1,0 +1,60 @@
+sudo: required
+
+language: node_js
+node_js: node
+
+cache: npm
+
+services:
+  - docker
+  - postgresql
+
+install:
+  - npm ci
+
+# Set up the test database
+before_script:
+  - psql -c "CREATE USER tester WITH PASSWORD 'secretpassword';" -U postgres
+  - psql -c "CREATE DATABASE cwcalendartest;" -U postgres
+  - psql -c "GRANT ALL PRIVILEGES ON DATABASE cwcalendartest TO tester;" -U postgres
+  # Use a temporary, per-session schema for isolated tests.
+  - psql -c "ALTER ROLE tester SET search_path = pg_temp;" -U postgres
+
+# Execute tests
+script:
+  - npm run test
+
+before_deploy:
+  - docker build -t petrec/cwcalendar -f Dockerfile .
+  # Generate documentation
+  - npm run jsdoc
+
+deploy:
+  - provider: elasticbeanstalk
+    region: $ELASTIC_BEANSTALK_REGION
+    app: $ELASTIC_BEANSTALK_APP
+    bucket_name: $TARGET_S3_BUCKET
+    bucket_path: $TARGET_S3_BUCKET_PATH
+    on:
+      branch: master
+    # Use decrypted keys.
+    access_key_id: $ACCESS_KEY_ID
+    secret_access_key: $SECRET_ACCESS_KEY
+
+    # Deploy documentation to gh-pages
+  - provider: pages
+    local_dir: docs/jsdoc
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+
+    # Deploy documentation on University GitHub
+  - provider: pages
+    local_dir: docs/jsdoc
+    skip_cleanup: true
+    github_token: $UNI_GITHUB_TOKEN
+    repo: petrec/304cem_backend
+    github_url: github.coventry.ac.uk
+
+# after_deploy:
+  # Update Codecov unit test coverage report
+  # - codecov --token=$CODECOV_TOKEN
