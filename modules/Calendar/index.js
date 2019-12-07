@@ -10,10 +10,14 @@ class Calendar {
   }
 }
 
+require('./get')(Calendar);
 require('./schema')(Calendar);
 require('./create')(Calendar);
 require('./update')(Calendar);
 require('./remove')(Calendar);
 require('./is-valid')(Calendar);
+require('./get-all')(Calendar);
+require('./get-between')(Calendar);
+require('./getAllByUserTagged')(Calendar);
 
 module.exports = Calendar;

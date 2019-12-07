@@ -8,13 +8,14 @@ const koaBody = require('koa-body')({
 const { uploadPicture } = require('../modules/Utils');
 
 const router = Router({
-  prefix: '/api/v0.2',
+  prefix: '/api/v1.0',
 });
 
 router.use(require('./activity').routes());
 router.use(require('./calendar').routes());
 router.use(require('./comment').routes());
 router.use(require('./user-auth').routes());
+router.use(require('./tag').routes());
 
 router.get('/', async (ctx) => {
   ctx.body = { message: 'Hello world.' };
@@ -24,7 +25,7 @@ router.get('/', async (ctx) => {
  * The secure multiple image upload endpoint.
  *
  * @name Upload Image file(s)
- * @route {POST} /api/v0.1/upload
+ * @route {POST} /api/v1.0/upload
  * @authentication This route requires cookie-based authentication.
  */
 router.post('/upload', koaBody, async (ctx) => {

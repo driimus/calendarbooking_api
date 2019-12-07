@@ -9,6 +9,13 @@ const router = Router({
   prefix: '/comment',
 });
 
+/**
+ * The secure comment creation endpoint.
+ *
+ * @name Create a new comment
+ * @route {POST} /api/v1.0/comment/create
+ * @authentication This route requires basic authentication.
+ */
 router.post('/create', koaBody, async (ctx) => {
   const comment = await new Comments();
   try {
@@ -27,7 +34,13 @@ router.post('/create', koaBody, async (ctx) => {
   }
 });
 
-
+/**
+ * The secure comment retrieval endpoint.
+ *
+ * @name GET Retrieve a Comment by its identifier
+ * @route {GET} /api/v1.0/comment/getById/:id
+ * @authentication This route requires basic authentication.
+ */
 router.get('/getById/:id([0-9]{1,})', async (ctx) => {
   const Comment = await new Comments();
   try {
@@ -39,6 +52,13 @@ router.get('/getById/:id([0-9]{1,})', async (ctx) => {
   }
 });
 
+/**
+ * The secure comment retrieveal endpoint.
+ *
+ * @name GET Retrieve all comment for an activity
+ * @route {GET} /api/v1.0/comment/getAllByActivityId/:id
+ * @authentication This route requires basic authentication.
+ */
 router.get('/getAllByActivityId/:id([0-9]{1,})', async (ctx) => {
   const Comment = await new Comments();
   try {
