@@ -58,3 +58,7 @@ deploy:
     github_url: github.coventry.ac.uk
     on:
       branch: master
+
+after_deploy:
+  # Update Codecov unit test coverage report
+  - codecov
