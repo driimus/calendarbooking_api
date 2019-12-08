@@ -8,6 +8,7 @@ class User {
   constructor() {
     return (async () => {
       this.db = new Connection();
+      await this.db.query(User.schema);
       return this;
     })();
   }
@@ -19,5 +20,6 @@ require('./is-available')(User);
 require('./register')(User);
 require('./does-exist')(User);
 require('./login')(User);
+require('./get-all')(User);
 
 module.exports = User;

@@ -11,6 +11,7 @@ services:
 
 install:
   - npm ci
+  - npm i codecov
 
 # Set up the test database
 before_script:
@@ -58,3 +59,7 @@ deploy:
     github_url: github.coventry.ac.uk
     on:
       branch: master
+
+after_deploy:
+  # Update Codecov unit test coverage report
+  - codecov

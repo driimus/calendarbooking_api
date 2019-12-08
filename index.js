@@ -29,7 +29,7 @@ app.listen(port, async () => {
   const pool = new Connection();
   await pool.query(`ALTER ROLE ${pool.options.user} SET search_path = public`);
   // Update the database schema.
-  Promise.all(models.map((model) => pool.query(model.schema)));
+  for (model of models) await pool.query(model.schema); // eslint-disable-line
   // Drain the pool of connections.
   await pool.end();
 });

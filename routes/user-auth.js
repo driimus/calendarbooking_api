@@ -62,4 +62,23 @@ router.post('/login', koaBody, async (ctx) => {
   }
 });
 
+/**
+ * Retrieve a list of all the users.
+ *
+ * @name Retrieve users
+ * @route {POST} /api/v1.0/users
+ * @authentication This route requires basic authentication.
+ */
+router.get('/', async (ctx) => {
+  // TO-DO: Implement user authentication
+  const user = await new User();
+  try {
+    const users = await user.getAll();
+    ctx.status = 200;
+    ctx.body = { msg: 'Successfully retrieved users', users };
+  } catch (err) {
+    ctx.throw(400, err.message);
+  }
+});
+
 module.exports = router;
