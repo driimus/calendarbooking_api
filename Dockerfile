@@ -23,5 +23,5 @@ RUN npm ci --only=production
 # Bundle app source
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3000 8080 $PORT
 CMD ["npm", "start"]

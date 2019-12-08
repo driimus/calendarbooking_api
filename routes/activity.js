@@ -22,18 +22,13 @@ router.post('/', koaBody, async (ctx) => {
   // TO-DO: Implement user authentication
   const Activity = await new Activities();
   try {
-    const {
-      title,
-      description,
-      url,
-      location,
-    } = ctx.request.body;
-    // console.log(activity, typeof activity);
+    // Get request body or assign empty object if undefined.
+    const { body = {} } = ctx.request;
     const id = await Activity.create({
-      title,
-      description,
-      url,
-      location,
+      title: body.title,
+      description: body.description,
+      url: body.url,
+      location: body.location,
     });
     ctx.status = 200;
     ctx.body = { msg: 'Successfully created activity', id };
@@ -53,18 +48,13 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
   // TO-DO: Implement user authentication
   const Activity = await new Activities();
   try {
-    const {
-      title,
-      description,
-      url,
-      location,
-    } = ctx.request.body;
-    // console.log(activity, typeof activity);
+    // Get request body or assign empty object if undefined.
+    const { body = {} } = ctx.request;
     await Activity.update(ctx.params.id, {
-      title,
-      description,
-      url,
-      location,
+      title: body.title,
+      description: body.description,
+      url: body.url,
+      location: body.location,
     });
     ctx.status = 200;
     ctx.body = { msg: 'Successfully updated activity' };

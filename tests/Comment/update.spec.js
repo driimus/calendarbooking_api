@@ -7,6 +7,13 @@ const dummy = {
   allText: 'I coul talk lots of shit but meh this university just sucks',
 };
 
+const dummyUpdate = {
+  id: 1,
+  userId: 1,
+  activityId: 1,
+  allText: 'I lots of shit but meh this university just sucks',
+};
+
 beforeAll(async (done) => {
   const db = new Connection();
   await db.query(`ALTER ROLE ${db.options.user} SET search_path = pg_temp `);
@@ -24,19 +31,12 @@ afterEach(async (done) => {
   done();
 });
 
-describe('getById ()', () => {
-  test('Retrieve comments for an activity', async (done) => {
+describe('create()', () => {
+  test('add valid comment', async (done) => {
     expect.assertions(1);
     await this.comment.create(dummy);
-    const comment = await this.comment.getAllByActivityId(1);
-    expect(comment.length).toEqual(1);
-    done();
-  });
-
-  test('Error when getting comment with invalid Id', async (done) => {
-    expect.assertions(1);
-    await expect(this.comment.getAllByActivityId(5))
-      .rejects.toEqual(Error('No comments available for the activity with id 5'));
+    const id = await this.comment.update(dummyUpdate);
+    expect(id).toEqual(1);
     done();
   });
 });
