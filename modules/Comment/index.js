@@ -19,7 +19,7 @@ require('./create')(Comment);
 require('./isValid')(Comment);
 require('./getById')(Comment);
 require('./getAllByActivityId')(Comment);
-require('./update')(Comment)
+require('./update')(Comment);
 
 
 module.exports = Comment;

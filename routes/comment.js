@@ -72,7 +72,7 @@ router.get('/getAllByActivityId/:id([0-9]{1,})', async (ctx) => {
 
 router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
   // TO-DO: Implement user authentication
-  const Comment = await new Comments ();
+  const Comment = await new Comments();
   try {
     const commentObj = {
       id: ctx.params.id,
@@ -82,7 +82,7 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
     };
     await Comment.update(commentObj);
     ctx.status = 200;
-    ctx.body = {msg: 'Successfully updated Comment' };
+    ctx.body = { msg: 'Successfully updated Comment' };
   } catch (err) {
     ctx.throw(400, err.message);
   }
