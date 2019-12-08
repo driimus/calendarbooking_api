@@ -22,19 +22,14 @@ router.post('/', koaBody, async (ctx) => {
   // TO-DO: Implement user authentication
   const Calendar = await new Activities();
   try {
-    const {
-      userId,
-      activityId,
-      start,
-      end,
-      location,
-    } = ctx.request.body;
+    // Get request body or assign empty object if undefined.
+    const { body = {} } = ctx.request;
     const id = await Calendar.create({
-      userId,
-      activityId,
-      start,
-      end,
-      location,
+      userId: body.userId,
+      activityId: body.activityId,
+      start: body.start,
+      end: body.end,
+      location: body.location,
     });
     ctx.status = 200;
     ctx.body = { msg: 'Successfully created calendar', id };
@@ -96,19 +91,14 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
   // TO-DO: Implement user authentication
   const Calendar = await new Activities();
   try {
-    const {
-      userId,
-      activityId,
-      start,
-      end,
-      location,
-    } = ctx.request.body;
+    // Get request body or assign empty object if undefined.
+    const { body = {} } = ctx.request;
     await Calendar.update(ctx.params.id, {
-      userId,
-      activityId,
-      start,
-      end,
-      location,
+      userId: body.userId,
+      activityId: body.activityId,
+      start: body.start,
+      end: body.end,
+      location: body.location,
     });
     ctx.status = 200;
     ctx.body = { msg: 'Successfully updated event' };
