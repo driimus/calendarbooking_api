@@ -19,5 +19,6 @@ require('./is-available')(User);
 require('./register')(User);
 require('./does-exist')(User);
 require('./login')(User);
+require('./get-all')(User);
 
 module.exports = User;
