@@ -22,15 +22,12 @@ router.post('/', koaBody, async (ctx) => {
   // TO-DO: Implement user authentication
   const tag = await new Tag();
   try {
-    const {
-      taggedUserId,
-      taggedByUserId,
-      calendarItemId,
-    } = ctx.request.body;
+    // Get request body or assign empty object if undefined.
+    const { body = {} } = ctx.request;
     const id = await tag.create({
-      taggedUserId,
-      taggedByUserId,
-      calendarItemId,
+      taggedUserId: body.taggedUserId,
+      taggedByUserId: body.taggedByUserId,
+      calendarItemId: body.calendarItemId,
     });
     ctx.status = 200;
     ctx.body = { msg: 'Successfully created tag', id };
