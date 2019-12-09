@@ -8,6 +8,7 @@ class User {
   constructor() {
     return (async () => {
       this.db = new Connection();
+      await this.db.query(User.schema);
       return this;
     })();
   }
