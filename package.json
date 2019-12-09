@@ -1,7 +1,7 @@
 {
   "name": "backend_petrec-rosariot",
-  "version": "1.0.3",
-  "description": "Back-End API for 304CEM coursework.",
+  "version": "1.0.4",
+  "description": "API for managing calendar events.",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
