@@ -1,6 +1,14 @@
 const Connection = require('../../db');
 const Calendar = require('../../modules/Calendar');
 
+const activity = {
+  title: 'So long and thanks for all the fish',
+  description: `Test activity description of a valid length
+  that spreads over multiple lines`,
+  url: 'https://nodejs.dev/introduction-to-nodejs',
+  location: 'Priory St, Coventry, UK',
+};
+
 const userId = 1;
 const dummies = [
   {
@@ -12,14 +20,14 @@ const dummies = [
   },
   {
     userId,
-    activityId: 3,
+    activityId: 1,
     start: new Date(0).setDate(5),
     end: new Date(0).setDate(6),
     location: 'Priory St, Coventry, UK',
   },
   {
     userId,
-    activityId: 5,
+    activityId: 1,
     start: new Date(0).setDate(1),
     end: new Date(0).setDate(2),
     location: 'Priory St, Coventry, UK',
@@ -43,6 +51,17 @@ beforeAll(async (done) => {
 
 beforeEach(async (done) => {
   this.calendar = await new Calendar();
+  await this.calendar.db.query(`CREATE TABLE IF NOT EXISTS activity(
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    description TEXT,
+    url TEXT,
+    location TEXT
+  )`);
+  await this.calendar.db.query(
+    'INSERT INTO activity VALUES(DEFAULT, $1, $2)',
+    [activity.title, activity.description],
+  );
   // eslint-disable-next-line
   for(const dummy of dummies) await this.calendar.create(dummy);
   done();
