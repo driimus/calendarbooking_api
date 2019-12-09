@@ -24,8 +24,9 @@ router.post('/', koaBody, async (ctx) => {
   try {
     // Get request body or assign empty object if undefined.
     const { body = {} } = ctx.request;
+    const userId = body.userId || 1;
     const id = await Calendar.create({
-      userId: body.userId,
+      userId,
       activityId: body.activityId,
       start: body.start,
       end: body.end,
@@ -93,8 +94,9 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
   try {
     // Get request body or assign empty object if undefined.
     const { body = {} } = ctx.request;
+    const userId = body.userId || 1;
     await Calendar.update(ctx.params.id, {
-      userId: body.userId,
+      userId,
       activityId: body.activityId,
       start: body.start,
       end: body.end,
@@ -117,7 +119,8 @@ router.put('/:id([0-9]{1,})', koaBody, async (ctx) => {
 router.del('/:id([0-9]{1,})', koaBody, async (ctx) => {
   try {
     const Calendar = await new Activities();
-    const { userId } = ctx.request.body;
+    // const { userId } = ctx.request.body;
+    const userId = 1;
     await Calendar.remove(ctx.params.id, userId);
     ctx.status = 200;
     ctx.body = { msg: 'Successfully deleted calendar' };
