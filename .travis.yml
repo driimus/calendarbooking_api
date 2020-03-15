@@ -31,16 +31,16 @@ before_deploy:
   - npm run jsdoc
 
 deploy:
-  - provider: elasticbeanstalk
-    region: $ELASTIC_BEANSTALK_REGION
-    app: $ELASTIC_BEANSTALK_APP
-    bucket_name: $TARGET_S3_BUCKET
-    bucket_path: $TARGET_S3_BUCKET_PATH
-    on:
-      branch: master
+  # - provider: elasticbeanstalk
+  #  region: $ELASTIC_BEANSTALK_REGION
+  #  app: $ELASTIC_BEANSTALK_APP
+  #  bucket_name: $TARGET_S3_BUCKET
+  #  bucket_path: $TARGET_S3_BUCKET_PATH
+  #  on:
+  #    branch: master
     # Use decrypted keys.
-    access_key_id: $ACCESS_KEY_ID
-    secret_access_key: $SECRET_ACCESS_KEY
+  #  access_key_id: $ACCESS_KEY_ID
+  #  secret_access_key: $SECRET_ACCESS_KEY
 
     # Deploy documentation to gh-pages
   - provider: pages
@@ -51,14 +51,14 @@ deploy:
       branch: master
 
     # Deploy documentation on University GitHub
-  - provider: pages
-    local_dir: docs/jsdoc
-    skip_cleanup: true
-    github_token: $UNI_GITHUB_TOKEN
-    repo: petrec/304cem_backend
-    github_url: github.coventry.ac.uk
-    on:
-      branch: master
+  # - provider: pages
+  #  local_dir: docs/jsdoc
+  #  skip_cleanup: true
+  #  github_token: $UNI_GITHUB_TOKEN
+  #  repo: petrec/304cem_backend
+  #  github_url: github.coventry.ac.uk
+  #  on:
+  #    branch: master
 
 after_deploy:
   # Update Codecov unit test coverage report
